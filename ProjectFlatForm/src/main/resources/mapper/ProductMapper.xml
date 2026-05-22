@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.cloud.mapper.ProductMapper">
+	
+	<select id="findProductsByFilters" resultType="org.cloud.dto.PriceDTO">
+		SELECT
+			p.product_id,
+			p.item_name,
+			p.view_count,
+			p.category,
+			ph.avg_price,
+			ph.region,
+			ph.date,
+			ph.change_rate
+		FROM product p
+		JOIN price_history ph ON p.product_id = ph.product_id
+		WHERE ph.region = #{region}
+		AND ph.date >= #{startDate}
+		
+		<if test="keyword != null and keyword != ''">
+			AND p.item_name LIKE CONCAT('%', #{keyword} '%')
+		</if>
+		
+		<choose>
+			<when test="sort == 'popular'">
+				ORDER BY p.view_count DESC
+			</when>
+			<when test="sort == 'latest'">
+				ORDER BY ph.date DESC
+			</when>
+			<otherwise>
+				ORDER BY ph.date DESC
+			</otherwise>
+		</choose>
+	</select>
+	
+</mapper>

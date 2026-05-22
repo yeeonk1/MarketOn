@@ -1,0 +1,220 @@
+:root {
+  --primary-green: #2ecc71;
+  --accent-blue: #1890ff;
+  --text-dark: #2c3e50;
+  --text-gray: #7f8c8d;
+  --border-light: #edf2f7;
+  --header-bg: rgba(255, 255, 255, 0.95);
+  --transition-smooth: all 0.25s ease-in-out;
+}
+
+.header-wrapper {
+  display: grid;
+  grid-template-columns: 320px 1fr 320px;
+  align-items: center;
+  padding: 15px 40px;
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+}
+
+.logo-sec .title .logo {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green) 0%,
+    var(--accent-blue) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.search-sec {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-right: 0 !important;
+}
+
+.search-sec > div {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  margin-right: 0 !important;
+}
+
+.search-sec input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  padding-right: 75px;
+  border: 2px solid #e2e8f0;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: #f8fafc;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.search-sec input[type="text"]:focus {
+  background: #ffffff;
+  border-color: var(--primary-green);
+  box-shadow: 0 4px 15px rgba(46, 204, 113, 0.12);
+}
+
+.search-sec button {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  padding: 0 22px;
+  background: var(--primary-green);
+  color: #ffffff;
+  border: none;
+  border-radius: 25px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.search-sec button:hover {
+  background: #27ae60;
+  box-shadow: 0 2px 8px rgba(39, 174, 96, 0.2);
+}
+
+.user-auth-sec {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.user-placeholder {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.welcomeMsg {
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-right: 8px;
+  white-space: nowrap;
+}
+
+.welcomeMsg b {
+  color: var(--primary-green);
+}
+
+.user-placeholder button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  background: transparent;
+  transition: var(--transition-smooth);
+}
+
+.user-placeholder button.login,
+.user-placeholder button.logout {
+  border: 1px solid #cbd5e1;
+  color: var(--text-dark);
+}
+
+.user-placeholder button.login:hover,
+.user-placeholder button.logout:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.user-placeholder button.join {
+  background: #f0f7ff;
+  border: 1px solid rgba(24, 144, 255, 0.2);
+  color: var(--accent-blue);
+}
+
+.user-placeholder button.join:hover {
+  background: var(--accent-blue);
+  color: #ffffff;
+}
+
+.main-layout {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.menu-card {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+  padding: 0;
+  gap: 60px;
+}
+
+.menu-card button {
+  background: transparent;
+  border: none;
+  padding: 16px 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #64748b;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-card button:hover {
+  color: var(--primary-green);
+}
+
+.menu-card button::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--primary-green);
+  transition: var(--transition-smooth);
+  transform: translateX(-50%);
+}
+
+.menu-card button:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 900px) {
+  .header-wrapper {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+  .search-sec,
+  .user-auth-sec {
+    justify-content: center;
+  }
+  .menu-card {
+    justify-content: center;
+    gap: 20px;
+  }
+}

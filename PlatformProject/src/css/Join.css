@@ -1,0 +1,237 @@
+:root {
+  --primary-green: #2ecc71;
+  --dark-green: #27ae60;
+  --text-dark: #2c3e50;
+  --text-gray: #7f8c8d;
+  --border-light: #edf2f7;
+  --input-bg: #f8fafc;
+  --transition-smooth: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.container:has(.joinCard) {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: joinFadeIn 0.5s ease-out;
+}
+
+@keyframes joinFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.joinCard {
+  width: 500px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-light);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.joinCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-green), #52c41a);
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+.joinCard .title {
+  margin: 0 0 20px 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+.joinCard form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.joinCard input,
+.joinCard select {
+  width: 100%;
+  padding: 13px 18px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-dark);
+  background: var(--input-bg);
+  outline: none;
+  box-sizing: border-box;
+  transition: var(--transition-smooth);
+}
+
+.joinCard input:hover,
+.joinCard select:hover {
+  border-color: #cbd5e1;
+}
+
+.joinCard input:focus,
+.joinCard select:focus {
+  background: #ffffff;
+  border-color: var(--primary-green);
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.08);
+}
+
+.joinCard form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.joinCard form > div:has(button) {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.joinCard form > div:has(button) input {
+  flex: 1;
+}
+
+.joinCard form > div button[type="button"] {
+  width: 90px;
+  padding: 13px 0;
+  background: #f1f5f9;
+  color: #475569;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  white-space: nowrap;
+}
+
+.joinCard form > div button[type="button"]:hover {
+  background: #cbd5e1;
+  color: var(--text-dark);
+}
+
+.joinCard form p {
+  margin: -2px 0 2px 6px;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.joinCard select {
+  -webkit-appearance: none;
+  appearance: none;
+  background: var(--input-bg)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%232c3e50' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+    no-repeat right 16px center;
+  background-size: 12px;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+.joinCard button[type="submit"] {
+  width: 100%;
+  padding: 14px;
+  background: var(--dark-green);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(39, 174, 96, 0.15);
+  transition: var(--transition-smooth);
+  margin-top: 10px;
+}
+
+.joinCard button[type="submit"]:hover:not(:disabled) {
+  background: #1e8449;
+  box-shadow: 0 6px 16px rgba(39, 174, 96, 0.25);
+  transform: translateY(-1px);
+}
+
+.joinCard button[type="submit"]:disabled {
+  background: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.forLogin {
+  margin-top: 25px;
+  text-align: center;
+  width: 100%;
+}
+
+.forLogin small {
+  font-size: 13px;
+  color: var(--text-gray);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.forLogin small .goLogin {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  margin-top: 0;
+
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--dark-green);
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.forLogin small .goLogin:hover {
+  background: transparent;
+  color: #1e8449;
+  box-shadow: none;
+}
+
+.forLogin small .goLogin::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background-color: var(--dark-green);
+  transform: scaleX(0);
+  transition: var(--transition-smooth);
+}
+
+.forLogin small .goLogin:hover::after {
+  transform: scaleX(1);
+}

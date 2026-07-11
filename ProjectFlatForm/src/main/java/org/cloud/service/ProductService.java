@@ -1,7 +1,6 @@
 package org.cloud.service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -172,15 +171,12 @@ public class ProductService {
 		return priceRepository.findValidOptionsByItem(itemName);
 	}
 	
-	
-	// 상세 페이지
-	// ProductService.java 파일 내부 빈 공간에 추가
 
 	@Transactional
 	public Map<String, Object> getProductAnalysisDetail(Long productId, String region) {
 	    String targetRegion = (region == null || region.isEmpty()) ? "서울" : region;
 	    
-	    // 1. 상품 기본 마스터 정보 확보
+	    // 상품 기본 마스터 정보 확보
 	    Product product = productRepository.findById(productId)
 	            .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 상품입니다."));
 	            
@@ -190,11 +186,9 @@ public class ProductService {
 	    analysisMap.put("kindName", product.getKindName());
 	    analysisMap.put("category", product.getCategory());
 
-	    // 2. 해당 상품 고유 ID와 지역을 조건으로 가격 이력 리스트 호출
 	    List<Map<String, Object>> priceDetails = productRepository.findAllByNameAndRegion(targetRegion, product.getProductId());
 	    
 	    if (priceDetails != null && !priceDetails.isEmpty()) {
-	        // [방어선] 정렬 규칙상 0번째 인덱스가 무조건 '가장 최신 날짜'의 시세 데이터 한 줄입니다.
 	        Map<String, Object> latestPrice = priceDetails.get(0);
 	        
 	        double avgPrice = ((Number) latestPrice.get("avgPrice")).doubleValue();
@@ -208,19 +202,15 @@ public class ProductService {
 	        analysisMap.put("unit", latestPrice.get("unit"));
 	        analysisMap.put("rankName", latestPrice.get("rankName"));
 	        analysisMap.put("viewCount", product.getViewCount());
-	        
-	        // ------------------------------------------------------------------
-	        // 📊 [AI 지표 1] 물가 지수 가성비 스코어 연산 (0점 ~ 100점)
-	        // ------------------------------------------------------------------
+
+	        // 물가 지수 가성비 스코어 연산 (0점 ~ 100점)
 	        int costEffectiveScore = 100;
 	        if (maxPrice != minPrice) {
 	            costEffectiveScore = (int) (100 - ((avgPrice - minPrice) / (maxPrice - minPrice) * 100));
 	        }
-	        analysisMap.put("costEffectiveScore", Math.max(0, Math.min(100, costEffectiveScore)));
-	        
-	        // ------------------------------------------------------------------
-	        // ⚠️ [AI 지표 2] 시장 가격 변동폭 위험도 연산
-	        // ------------------------------------------------------------------
+	        analysisMap.put("costEffectiveScore", Math.max(0, Math.min(100, costEffectiveScore)));	        
+
+	        // 시장 가격 변동폭 위험도 연산
 	        double volatility = 0.0;
 	        if (avgPrice > 0) {
 	            volatility = ((maxPrice - minPrice) / avgPrice) * 100;
@@ -237,7 +227,6 @@ public class ProductService {
 	        analysisMap.put("priceRiskLevel", priceRiskLevel);
 	        
 	    } else {
-	        // [예외 방어선] 데이터가 하나도 매칭되지 않을 때 프론트엔드가 Null을 참조해 깨지는 현상 방지
 	        analysisMap.put("avgPrice", null);
 	        analysisMap.put("minPrice", null);
 	        analysisMap.put("maxPrice", null);

@@ -3,10 +3,8 @@ package org.cloud.controller;
 import java.util.List;
 import java.util.Map;
 
-import org.cloud.domain.Product;
 import org.cloud.service.APIService;
 import org.cloud.service.ProductService;
-import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,13 +30,6 @@ public class ApiController {
 		apiService.fetchAndSave();
 		return "데이터 수집 완료";
 	}
-
-//	@GetMapping("/")
-//	public Page<Product> getProducts(
-//			@RequestParam(name = "keyword", required = false, defaultValue = "") String keyword,
-//			@RequestParam(name = "page", defaultValue = "0") int page) {
-//		return productService.searchProducts(keyword, keyword);
-//	}
 	
 	@GetMapping("/popular")
 	public ResponseEntity<List<Map<String, Object>>> getPopular(

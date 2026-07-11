@@ -79,7 +79,7 @@ public class PriceService {
 
 	        priceRepository.save(history);
 
-	        System.out.println("💾 저장: " + dto.getItemName() + " / " + price);
+	        System.out.println("저장: " + dto.getItemName() + " / " + price);
 	    }
 	}
 }

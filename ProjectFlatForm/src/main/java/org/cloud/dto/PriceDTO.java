@@ -50,7 +50,6 @@ public class PriceDTO {
     @JsonProperty("grd_cd")
     private String rankCode;
     
-    // 추가
     @JsonProperty("ctgry_cd")
 	private String categoryCode;
 	

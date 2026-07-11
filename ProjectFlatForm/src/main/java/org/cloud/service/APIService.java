@@ -47,8 +47,8 @@ public class APIService {
 				    + "&pageNo=" + pageNo
 				    + "&numOfRows=1000"
 				    + "&cond%5Bsgg_cd::EQ%5D=" + sggCode
-				    + "&cond%5Bexmn_ymd::GTE%5D=20260501"
-				    + "&cond%5Bexmn_ymd::LTE%5D=20260515";
+				    + "&cond%5Bexmn_ymd::GTE%5D=20260701"
+				    + "&cond%5Bexmn_ymd::LTE%5D=20260710";
 				
 				try {
 					System.out.println(pageNo + "페이지 요청 중...");
@@ -78,7 +78,7 @@ public class APIService {
 					
 					if (items == null || items.isEmpty()) {
 					    System.out.println("❓ items가 비어있습니다. 응답 원본을 확인하세요.");
-					    // 이 아래 코드를 추가해서 실제 JSON 구조를 눈으로 보세요.
+
 					    ResponseEntity<String> rawJson = restTemplate.getForEntity(uri, String.class);
 					    System.out.println("🔎 RAW JSON: " + rawJson.getBody());
 					    

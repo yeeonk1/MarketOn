@@ -87,7 +87,6 @@ public class UserController {
 
         Map<String, Object> response = new HashMap<>();
         
-        // 비밀번호를 제외 정보 매핑 (보안 처리)
         Map<String, Object> userInfo = new HashMap<>();
         userInfo.put("idx", user.getIdx());
         userInfo.put("id", user.getId());

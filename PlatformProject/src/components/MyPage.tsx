@@ -28,6 +28,20 @@ export const MyPage = () => {
         const data = await userAPI.getMyPageData(CURRENT_USER_IDX);
         setUserInfo(data.userInfo);
         setFavItems(data.favoriteItems || []);
+
+        if (data.userInfo) {
+          setEditForm({
+            name: data.userInfo.name || "",
+            userRegion: data.userInfo.userRegion || "서울",
+            password: data.userInfo.password || "",
+            email: data.userInfo.email || "",
+          });
+
+          localStorage.setItem(
+            "userRegion",
+            data.userInfo.userRegion || "서울",
+          );
+        }
       } catch (error) {
         console.error("마이페이지 데이터 로드 실패: ", error);
       } finally {

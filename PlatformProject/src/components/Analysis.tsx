@@ -339,7 +339,6 @@ export const Analysis = () => {
             <tbody>
               {analysisData.length > 0 ? (
                 [...analysisData].reverse().map((row, idx) => {
-                  // 💡 안전한 렌더링을 위해 현재 선택된 동적 옵션(품종, 등급, 규격 등)을 확보합니다.
                   const currentOpt = options[selectedOptIdx];
 
                   return (
@@ -351,12 +350,10 @@ export const Analysis = () => {
                         {row.date}
                       </td>
 
-                      {/* 💡 [수정] row 자체에 itemName이 있다면 그것을 먼저 뿌리고, 없다면 상단 선택된 메인 품목명(itemName)을 강제로 동기화합니다. */}
                       <td style={{ fontWeight: "bold", color: "#222" }}>
                         {row.itemName || itemName}
                       </td>
 
-                      {/* 💡 품종과 등급도 현재 선택된 동적 옵션의 값으로 정확하게 고정 출력 */}
                       <td style={{ color: "#666" }}>
                         {row.kindName || currentOpt?.kindName || "-"}
                       </td>
@@ -364,7 +361,6 @@ export const Analysis = () => {
                         {row.rankName || currentOpt?.rankName || "일반"}
                       </td>
 
-                      {/* 단위 규격 매핑 */}
                       <td style={{ color: "#111", fontWeight: "600" }}>
                         {row.unitSz || currentOpt?.unitSz}
                         {row.unit || currentOpt?.unit}

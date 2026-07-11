@@ -73,7 +73,6 @@ export const ProductDetail = () => {
   return (
     <div className="container">
       <div className="detailCard">
-        {/* 💡 상단 헤더 존: 타이틀 볼륨업 및 구조 정돈 */}
         <div className="detail-top-bar">
           <div className="main-title-zone">
             <span className="mini-lbl-badge">
@@ -141,7 +140,6 @@ export const ProductDetail = () => {
                   </div>
                 </div>
 
-                {/* 💡 관심 종목 액션 버튼 위치 */}
                 <div className="action-btns">
                   <button
                     onClick={handleFavoriteToggle}
@@ -155,7 +153,7 @@ export const ProductDetail = () => {
 
               <section className="ai-report-section">
                 <h3 className="section-inside-title">
-                  ⚡ AI 실시간 시세 분석 리포트
+                  실시간 시세 분석 리포트
                 </h3>
                 <div className="ai-report-grid">
                   <div className="ai-box score-box">
@@ -213,7 +211,6 @@ export const ProductDetail = () => {
           )}
         </main>
 
-        {/* 💡 하단 내비게이션 존 */}
         <div className="back-btn-wrapper">
           <button className="modern-back-btn" onClick={() => navigate(-1)}>
             목록으로 돌아가기

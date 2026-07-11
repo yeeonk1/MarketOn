@@ -47,8 +47,8 @@ public class APIService {
 				    + "&pageNo=" + pageNo
 				    + "&numOfRows=1000"
 				    + "&cond%5Bsgg_cd::EQ%5D=" + sggCode
-				    + "&cond%5Bexmn_ymd::GTE%5D=20260701"
-				    + "&cond%5Bexmn_ymd::LTE%5D=20260710";
+				    + "&cond%5Bexmn_ymd::GTE%5D=20260603"
+				    + "&cond%5Bexmn_ymd::LTE%5D=20260610";
 				
 				try {
 					System.out.println(pageNo + "페이지 요청 중...");
